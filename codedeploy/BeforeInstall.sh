@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo rm /var/www/html/index.php
+sudo rm /web/index.php
