@@ -36,10 +36,10 @@
 
         <h3 class="text-muted">HA Team</h3>
 <?php
-        $host = 'database-1.cdn5flhfmmcm.ap-northeast-2.rds.amazonaws.com';
-        $user = 'root';
-        $pw = '12345678';
-        $dbName = 'mydb';
+        $host = '';
+        $user = '';
+        $pw = '';
+        $dbName = '';
         $conn = new mysqli($host,$user,$pw,$dbName);
         mysqli_set_charset($conn, "utf8");
 
@@ -84,7 +84,7 @@
 
       <!-- Jumbotron -->
       <div class="jumbotron">
-        <h1> HA Computers </h1>
+        <h1> HA Computers _v2</h1>
         <p class="lead"> IT기기 판매전문 쇼핑몰 </p>
         <p><a class="btn btn-lg btn-success" href="#" role="button">로그인</a></p>
       </div>
