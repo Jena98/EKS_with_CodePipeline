@@ -1,0 +1,46 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: web-deploy
+spec:
+  selector:
+    matchLabels:
+      app: web
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: webserver
+          image: hacomputers/webserver-image # push한 도커이미지
+          command: ["/bin/sh"]
+          args: ["-c", "systemctl restart httpd && tail -f /dev/null"] 
+          volumeMounts:
+          - mountPath: /var/www/html
+            name: volume
+      volumes:
+      - name: volume
+        hostPath:
+          path: /web
+          type: Directory      
+            
+           
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service-lb
+  annotations:
+    service.beta.kubernetes.io/ncloud-load-balancer-subnet-id: "subnet-0906f9f320e319e8d" # 로드발란서 생성될 Public 서브넷
+    service.beta.kubernetes.io/ncloud-load-balancer-subnet-id: "subnet-03e1b801f0a0d3224"
+spec:
+  selector:
+    app: web
+  ports:
+  - name: webserver-service
+    protocol: TCP
+    port: 80
+  type: LoadBalancer            
