@@ -1,0 +1,21 @@
+version: 0.0
+os: linux
+files:
+  - source: /index.php
+    destination: /web
+hooks:
+  BeforeInstall:
+    - location: codedeploy/BeforeInstall.sh
+      runas: root
+  AfterInstall:
+    - location: codedeploy/AfterInstall.sh
+      runas: root
+  ApplicationStop:
+    - location: codedeploy/ApplicationStop.sh
+      runas: root
+  ApplicationStart:
+    - location: codedeploy/ApplicationStart.sh
+      runas: root
+  ValidateService:
+    - location: codedeploy/ValidateService.sh
+      runas: root      
