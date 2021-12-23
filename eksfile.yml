@@ -34,8 +34,8 @@ kind: Service
 metadata:
   name: web-service-lb
   annotations:
-    service.beta.kubernetes.io/ncloud-load-balancer-subnet-id: "subnet-0906f9f320e319e8d" # 로드발란서 생성될 Public 서브넷
-    service.beta.kubernetes.io/ncloud-load-balancer-subnet-id: "subnet-03e1b801f0a0d3224"
+    service.beta.kubernetes.io/ncloud-load-balancer-subnet-id: "subnet-xxxxxxxxxxxxxxxxx" # 로드발란서 생성될 Public 서브넷
+    service.beta.kubernetes.io/ncloud-load-balancer-subnet-id: "subnet-xxxxxxxxxxxxxxxxx"
 spec:
   selector:
     app: web
